@@ -1,0 +1,80 @@
+---
+title: "Create Category"
+api: "PUT https://www.pacekb.com/api/v2/categories"
+description: "This endpoint creates a new category."
+---
+
+### Body
+
+<ParamField path="name" type="string" required>
+    Name of category
+</ParamField>
+
+<ParamField path="slug" type="string" required>
+    Slug of category
+</ParamField>
+
+<ParamField path="priority" type="number" required>
+    Ordering priority of article
+</ParamField>
+
+<ParamField path="categoryParent" type="string">
+    ID of category parent
+</ParamField>
+
+<ParamField path="description" type="string">
+    Description of category
+</ParamField>
+
+<ParamField path="longDescription" type="string">
+    HTML-supported description of category
+</ParamField>
+
+<ParamField path="thumbnailUrl" type="string">
+    URL of thumbnail image
+</ParamField>
+
+<ParamField path="iconUrl" type="string">
+    URL of icon image
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Success/error message
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request PUT 'https://www.pacekb.com/api/v2/categories' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+--data-raw '{
+    "name": "Getting Started",
+    "slug": "getting-started",
+    "priority": 0,
+    "categoryParent": "<id>",
+    "description": "How to get started with your PaceKB Knowledge Base",
+    "longDescription": "<h1>Getting started is easy with PaceKB. Here is how you can do it:</h1>",
+    "thumbnailUrl": "https://pacekb.com/thumbnail.jpg",
+    "iconUrl": "https://pacekb.com/icon.svg"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "message": "Getting Started has been created"
+}
+```
+
+</ResponseExample>

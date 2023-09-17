@@ -1,0 +1,60 @@
+---
+title: "Create Tag"
+api: "PUT https://www.pacekb.com/api/v2/tags"
+description: "This endpoint creates a new tag."
+---
+
+### Body
+
+<ParamField path="name" type="string" required>
+    Name of tag
+</ParamField>
+
+<ParamField path="slug" type="string" required>
+    Slug of tag
+</ParamField>
+
+<ParamField path="description" type="string">
+    Description of tag
+</ParamField>
+
+<ParamField path="longDescription" type="string">
+    HTML-supported description of tag
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Success/error message
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request PUT 'https://www.pacekb.com/api/v2/tags' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+--data-raw '{
+    "name": "Getting Started",
+    "slug": "getting-started",
+    "description": "How to get started with your PaceKB Knowledge Base",
+    "longDescription": "<h1>Getting started is easy with PaceKB. Here is how you can do it:</h1>"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "message": "Getting Started has been created"
+}
+```
+
+</ResponseExample>
