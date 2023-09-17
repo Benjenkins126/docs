@@ -1,10 +1,18 @@
 ---
-title: "Create Tag"
-api: "PUT https://www.pacekb.com/api/v2/tags"
-description: "This endpoint creates a new tag."
+title: "Edit Tag"
+api: "POST https://www.pacekb.com/api/v2/tags/[id]"
+description: "This endpoint edits an existing tag."
 ---
 
+<ParamField path="id" type="string">
+    ID of the tag to edit
+</ParamField>
+
 ### Body
+
+<ParamField body="id" type="string" required>
+    ID of tag
+</ParamField>
 
 <ParamField body="name" type="string" required>
     Name of tag
@@ -22,6 +30,10 @@ description: "This endpoint creates a new tag."
     HTML-supported description of tag
 </ParamField>
 
+<ParamField body="lang" type="string" required>
+    Language code if not an english tag
+</ParamField>
+
 ### Response
 
 <ResponseField name="success" type="boolean">
@@ -35,14 +47,16 @@ description: "This endpoint creates a new tag."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request PUT 'https://www.pacekb.com/api/v2/tags' \
+curl --location --request POST 'https://www.pacekb.com/api/v2/tags/[id]' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --data-raw '{
+    "id": "<id>",
     "name": "Getting Started",
     "slug": "getting-started",
     "description": "How to get started with your PaceKB Knowledge Base",
-    "longDescription": "<h1>Getting started is easy with PaceKB. Here is how you can do it:</h1>"
+    "longDescription": "<h1>Getting started is easy with PaceKB. Here is how you can do it:</h1>",
+    "lang": "fr"
 }'
 ```
 
@@ -53,7 +67,7 @@ curl --location --request PUT 'https://www.pacekb.com/api/v2/tags' \
 ```json Response
 {
   "success": true,
-  "message": "Getting Started has been created"
+  "message": "Tag has been updated successfully"
 }
 ```
 

@@ -1,8 +1,12 @@
 ---
-title: "Create Category"
-api: "PUT https://www.pacekb.com/api/v2/categories"
-description: "This endpoint creates a new category."
+title: "Edit Category"
+api: "POST https://www.pacekb.com/api/v2/categories/[id]"
+description: "This endpoint edits an existing category."
 ---
+
+<ParamField path="id" type="string">
+    ID of the category to edit
+</ParamField>
 
 ### Body
 
@@ -38,6 +42,10 @@ description: "This endpoint creates a new category."
     URL of icon image
 </ParamField>
 
+<ParamField body="lang" type="string" required>
+    Language code if not an english tag
+</ParamField>
+
 ### Response
 
 <ResponseField name="success" type="boolean">
@@ -51,7 +59,7 @@ description: "This endpoint creates a new category."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request PUT 'https://www.pacekb.com/api/v2/categories' \
+curl --location --request POST 'https://www.pacekb.com/api/v2/categories/[id]' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --data-raw '{
@@ -62,7 +70,8 @@ curl --location --request PUT 'https://www.pacekb.com/api/v2/categories' \
     "description": "How to get started with your PaceKB Knowledge Base",
     "longDescription": "<h1>Getting started is easy with PaceKB. Here is how you can do it:</h1>",
     "thumbnailUrl": "https://pacekb.com/thumbnail.jpg",
-    "iconUrl": "https://pacekb.com/icon.svg"
+    "iconUrl": "https://pacekb.com/icon.svg",
+    "lang": "fr"
 }'
 ```
 
@@ -73,7 +82,7 @@ curl --location --request PUT 'https://www.pacekb.com/api/v2/categories' \
 ```json Response
 {
   "success": true,
-  "message": "Getting Started has been created"
+  "message": "Category has been updated successfully"
 }
 ```
 

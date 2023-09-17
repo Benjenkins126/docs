@@ -101,6 +101,9 @@
   "api": {
     "auth": {
       "method": "bearer"
+    },
+    "playground": {
+      "mode": "hide"
     }
   }
 }

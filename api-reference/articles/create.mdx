@@ -1,41 +1,63 @@
 ---
-title: "Create Category"
-api: "PUT https://www.pacekb.com/api/v2/categories"
-description: "This endpoint creates a new category."
+title: "Create Article"
+api: "PUT https://www.pacekb.com/api/v2/articles"
+description: "This endpoint creates a new article."
 ---
 
 ### Body
 
-<ParamField path="name" type="string" required>
-    Name of category
+<ParamField body="title" type="string" required>
+    Title of article
 </ParamField>
 
-<ParamField path="slug" type="string" required>
-    Slug of category
+<ParamField body="slug" type="string" required>
+    Slug of article
 </ParamField>
 
-<ParamField path="priority" type="number" required>
-    Ordering priority of article
+<ParamField body="categories" type="array" required>
+    Array of all category objects
+    <Expandable title="Category object">
+        <ResponseField name="value" type="string">
+            ID of the category
+        </ResponseField>
+    </Expandable>
 </ParamField>
 
-<ParamField path="categoryParent" type="string">
-    ID of category parent
+<ParamField body="tags" type="array">
+    Array of all tags objects
+    <Expandable title="Tag object">
+        <ResponseField name="value" type="string">
+            ID of the tag
+        </ResponseField>
+    </Expandable>
 </ParamField>
 
-<ParamField path="description" type="string">
-    Description of category
+<ParamField body="excerpt" type="string" required>
+    Excerpt of article (Max 160 characters)
 </ParamField>
 
-<ParamField path="longDescription" type="string">
-    HTML-supported description of category
+<ParamField body="ordering" type="number" required>
+    Order priority of article
 </ParamField>
 
-<ParamField path="thumbnailUrl" type="string">
-    URL of thumbnail image
+<ParamField body="status" type="string" required>
+    Status of article: draft or published
 </ParamField>
 
-<ParamField path="iconUrl" type="string">
-    URL of icon image
+<ParamField body="content" type="string" required>
+    Article content (HTML accepted)
+</ParamField>
+
+<ParamField body="hideFromSearch" type="boolean" required>
+    Hide article from search
+</ParamField>
+
+<ParamField body="seoBannerUrl" type="string">
+    URL of SEO banner image
+</ParamField>
+
+<ParamField body="articleReviewDate" type="date">
+    Date of next review of article
 </ParamField>
 
 ### Response
@@ -51,18 +73,29 @@ description: "This endpoint creates a new category."
 <RequestExample>
 
 ```bash Example Request
-curl --location --request PUT 'https://www.pacekb.com/api/v2/categories' \
+curl --location --request PUT 'https://www.pacekb.com/api/v2/articles' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Token <token>' \
 --data-raw '{
-    "name": "Getting Started",
-    "slug": "getting-started",
-    "priority": 0,
-    "categoryParent": "<id>",
-    "description": "How to get started with your PaceKB Knowledge Base",
-    "longDescription": "<h1>Getting started is easy with PaceKB. Here is how you can do it:</h1>",
-    "thumbnailUrl": "https://pacekb.com/thumbnail.jpg",
-    "iconUrl": "https://pacekb.com/icon.svg"
+    "title": "How to create an article in PaceKB",
+    "slug": "how-to-create-an-article-in-pacekb",
+    "categories": [
+        {
+            "value": "<id>"
+        }
+    ],
+    "tags": [
+        {
+            "value": "<id>"
+        }
+    ],
+    "excerpt": "Find out how to create an article in PaceKB!",
+    "ordering": 0,
+    "status": "published",
+    "content": "<h1>Getting Started</h1><p>This is how you can create an article in PaceKB...</p>",
+    "hideFromSearch": false,
+    "seoBannerUrl": "https://www.pacekb.com/seoBanner.png",
+    "articleReviewDate": "2023-06-05T20:42:23.805Z"
 }'
 ```
 
@@ -73,7 +106,7 @@ curl --location --request PUT 'https://www.pacekb.com/api/v2/categories' \
 ```json Response
 {
   "success": true,
-  "message": "Getting Started has been created"
+  "message": "How to create an article in PaceKB has been created"
 }
 ```
 
