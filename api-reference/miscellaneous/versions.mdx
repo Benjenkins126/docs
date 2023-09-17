@@ -1,0 +1,109 @@
+---
+title: "Get Version Changes"
+api: "GET https://www.pacekb.com/api/v2/versions?count=10"
+description: "This endpoint gets all changelogs in PaceKB Versions"
+---
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  If there's an error an accompanying error message will be visible
+</ResponseField>
+
+<ResponseField name="data" type="array">
+
+Array of all version objects including changelog
+
+<Expandable title="Toggle object">
+
+<ResponseField name="id" type="string">
+  ID of version
+</ResponseField>
+
+<ResponseField name="version" type="string">
+  Version number
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Version title
+</ResponseField>
+
+<ResponseField name="release_timestamp" type="date">
+  Date when the version was released
+</ResponseField>
+
+<ResponseField name="active_version" type="boolean">
+  This is the current version
+</ResponseField>
+
+<ResponseField name="released_version" type="boolean">
+  This version has been released
+</ResponseField>
+
+<ResponseField name="changelog_features" type="array">
+  Array of all features in the version
+  <Expandable title="Features object">
+    <ResponseField name="id" type="string">
+      ID of the feature
+    </ResponseField>
+    <ResponseField name="changelog_version" type="string">
+      ID of the version the feature is assigned to
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Name of feature
+    </ResponseField>
+    <ResponseField name="description" type="string">
+      Description of feature
+    </ResponseField>
+    <ResponseField name="image_url" type="string">
+      URL of the changelog image
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+</Expandable>
+
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://www.pacekb.com/api/v2/versions?count={count}' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": [
+    {
+        "id": "<id>",
+        "version": "1.15",
+        "name": "AI Generated Summary, PaceKB Professional and more...",
+        "release_timestamp": "2023-06-05T20:42:23.805Z",
+        "active_version": true,
+        "released_version": true,
+        "changelog_features": [
+            {
+                "id": "<id>",
+                "changelog_version": "<id>",
+                "name": "AI Article Summary",
+                "description": "Automatically show your readers a 3-4 sentence summary of your article",
+                "image_url": "https://pacekb-bucket.s3.amazonaws.com/changelogs/1.15/v1.15-ai-summary.gif"
+            }
+        ]
+    }
+  ]
+}
+```
+
+</ResponseExample>

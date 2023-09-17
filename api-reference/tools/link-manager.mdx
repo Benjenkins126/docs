@@ -1,0 +1,95 @@
+---
+title: "Get Link Manager List"
+api: "GET https://www.pacekb.com/api/v2/tools/link_manager"
+description: "This endpoint gets all link status' on your Knowledge Base"
+---
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  If there's an error an accompanying error message will be visible
+</ResponseField>
+
+<ResponseField name="data" type="array">
+
+Array of all links in Link Manager tool
+
+<Expandable title="Toggle object">
+
+<ResponseField name="id" type="string">
+  ID of link
+</ResponseField>
+
+<ResponseField name="site_id" type="string">
+  ID of site
+</ResponseField>
+
+<ResponseField name="article_id" type="string">
+  ID of article
+</ResponseField>
+
+<ResponseField name="url" type="string">
+  URL
+</ResponseField>
+
+<ResponseField name="created_date" type="date">
+  Date when link was scanned
+</ResponseField>
+
+<ResponseField name="working" type="boolean">
+  Link is active
+</ResponseField>
+
+<ResponseField name="articles" type="object">
+  Details about the article
+  <Expandable title="Articles object">
+    <ResponseField name="id" type="string">
+      ID of the article
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Name of article
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+</Expandable>
+
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://www.pacekb.com/api/v2/tools/link_manager' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": [
+    {
+        "id": "<id>",
+        "site_id": "<id>",
+        "article_id": "<id>",
+        "url": "https://www.pacekb.com",
+        "created_date": "2023-06-05T20:42:23.805Z",
+        "working": true,
+        "articles": {
+            "id": "<id>",
+            "name": "PaceKB v1.1.0 - Release Highlights"
+        }
+    }
+  ]
+}
+```
+
+</ResponseExample>

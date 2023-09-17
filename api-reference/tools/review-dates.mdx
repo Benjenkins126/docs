@@ -1,0 +1,98 @@
+---
+title: "Get Review Dates List"
+api: "GET https://www.pacekb.com/api/v2/tools/review_dates"
+description: "This endpoint gets all review dates data for your Knowledge Base"
+---
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  If there's an error an accompanying error message will be visible
+</ResponseField>
+
+<ResponseField name="data" type="array">
+
+Array of all articles in Review Dates tool
+
+<Expandable title="Toggle object">
+
+<ResponseField name="id" type="string">
+  ID of article
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Article name
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Status of article (draft, draftCopy, published)
+</ResponseField>
+
+<ResponseField name="article_review_date" type="date">
+  Date when article is due for review
+</ResponseField>
+
+<ResponseField name="language" type="string">
+  Language code of article (null = English)
+</ResponseField>
+
+<ResponseField name="users_articles_created_byTousers" type="object">
+  The user that created the article
+  <Expandable title="Users object">
+    <ResponseField name="username" type="string">
+      Username of user
+    </ResponseField>
+    <ResponseField name="first_name" type="string">
+      First name of user
+    </ResponseField>
+    <ResponseField name="last_name" type="string">
+      Last name of user
+    </ResponseField>
+    <ResponseField name="email_address" type="string">
+      Email address of user
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+</Expandable>
+
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://www.pacekb.com/api/v2/tools/review_dates' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": [
+    {
+        "id": "<id>",
+        "name": "How to add a team user to PaceKB",
+        "status": "published",
+        "article_review_date": "2023-06-05T20:42:23.805Z",
+        "language": null,
+        "users_articles_created_byTousers": {
+            "username": "benj",
+            "first_name": "Ben",
+            "last_name": "Jenkins",
+            "email_address": "ben@example.com"
+        }
+    }
+  ]
+}
+```
+
+</ResponseExample>

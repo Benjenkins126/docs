@@ -1,0 +1,40 @@
+---
+title: "Delete Article"
+api: "DELETE https://www.pacekb.com/api/v2/articles/[id]"
+description: "This endpoint deletes an existing article."
+---
+
+<ParamField path="id" type="string">
+    ID of the article to delete
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Success/error message
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request DELETE 'https://www.pacekb.com/api/v2/articles/[id]' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "message": "Article: How to create an article has been deleted"
+}
+```
+
+</ResponseExample>

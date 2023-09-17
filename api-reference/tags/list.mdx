@@ -1,0 +1,114 @@
+---
+title: "List Tags"
+api: "GET https://www.pacekb.com/api/v2/tags"
+description: "This endpoint gets all tags from your Knowledge Base."
+---
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  If there's an error an accompanying error message will be visible
+</ResponseField>
+
+<ResponseField name="data" type="array">
+
+List of all tags
+
+<Expandable title="Toggle object in array">
+
+<ResponseField name="id" type="string">
+  The unique ID of the tag
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  The name of the tag
+</ResponseField>
+
+<ResponseField name="slug" type="string">
+  The slug of the tag
+</ResponseField>
+
+<ResponseField name="other_tags" type="array">
+  An array of all languages associated with this tag in the format of \{language: 'fr'\}
+</ResponseField>
+
+<ResponseField name="users_tags_created_byTousers" type="object">
+  The user that created the tag
+  <Expandable title="Users object">
+    <ResponseField name="username" type="string">
+      Username of user
+    </ResponseField>
+    <ResponseField name="first_name" type="string">
+      First name of user
+    </ResponseField>
+    <ResponseField name="last_name" type="string">
+      Last name of user
+    </ResponseField>
+    <ResponseField name="email_address" type="string">
+      Email address of user
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="tag_relationship" type="array">
+  Array of all tag relationships (Used to count how many published articles are using this tag)
+</ResponseField>
+
+</Expandable>
+</ResponseField>
+
+<ResponseField name="languages" type="array">
+  Array of all language codes your Knowledge Base has enabled
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://www.pacekb.com/api/v2/tags' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": [
+    {
+        "other_tags": [
+            {
+                "language": "fr"
+            }
+        ],
+        "id": "<id>",
+        "name": "Getting Started",
+        "slug": "getting-started",
+        "users_tags_created_byTousers": {
+            "username": "benj",
+            "first_name": "Ben",
+            "last_name": "Jenkins",
+            "email_address": "ben@example.com"
+        },
+        "tag_relationship": [
+            {
+                "added_by": "<id>",
+                "added_date": "2023-06-05T20:42:23.805Z",
+                "article_id": "<id>",
+                "id": "<id>",
+                "site_id": "<id>",
+                "tag_id": "<id>"
+            }
+        ]
+    }
+  ]
+}
+```
+
+</ResponseExample>

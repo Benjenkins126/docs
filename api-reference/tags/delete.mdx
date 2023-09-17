@@ -1,0 +1,40 @@
+---
+title: "Delete Tag"
+api: "DELETE https://www.pacekb.com/api/v2/tags/[id]"
+description: "This endpoint deletes an existing tag."
+---
+
+<ParamField path="id" type="string">
+    ID of the tag to delete
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Success/error message
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request DELETE 'https://www.pacekb.com/api/v2/tags/[id]' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "message": "Tag: Billing has been deleted"
+}
+```
+
+</ResponseExample>

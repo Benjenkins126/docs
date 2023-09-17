@@ -1,82 +1,106 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "PaceKB API Reference",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#9563FF",
-    "light": "#AE87FF",
-    "dark": "#0D001D",
+    "primary": "#0040FF",
+    "light": "#0040FF",
+    "dark": "#0040FF",
     "background": {
       "dark": "#090014"
     },
     "anchors": {
-      "from": "#FF7F57",
-      "to": "#9563FF"
+      "from": "#4B62A5",
+      "to": "#0040FF"
     }
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:ben@pacekb.com"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Home",
+    "url": "https://www.pacekb.com"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "Knowledge Base",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "url": "https://help.pacekb.com/"
     },
     {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "name": "Dashboard",
+      "icon": "chart-line",
+      "url": "https://www.pacekb.com/app/admin/dashboard"
     },
     {
       "name": "Blog",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://www.pacekb.com/blog"
     }
   ],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
-    },
-    {
-      "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+      "pages": ["introduction"]
     },
     {
       "group": "API Documentation",
       "pages": ["api-reference/authentication"]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Articles",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        "api-reference/articles/list",
+        "api-reference/articles/create",
+        "api-reference/articles/edit",
+        "api-reference/articles/delete"
+      ]
+    },
+    {
+      "group": "Categories",
+      "pages": [
+        "api-reference/categories/list",
+        "api-reference/categories/create",
+        "api-reference/categories/edit",
+        "api-reference/categories/delete"
+      ]
+    },
+    {
+      "group": "Tags",
+      "pages": [
+        "api-reference/tags/list",
+        "api-reference/tags/create",
+        "api-reference/tags/edit",
+        "api-reference/tags/delete"
+      ]
+    },
+    {
+      "group": "Tools",
+      "pages": [
+        "api-reference/tools/link-manager",
+        "api-reference/tools/review-dates"
+      ]
+    },
+    {
+      "group": "Miscellaneous",
+      "pages": [
+        "api-reference/miscellaneous/versions"
       ]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "twitter": "https://twitter.com/pace_kb"
+  },
+  "api": {
+    "auth": {
+      "method": "bearer"
+    }
   }
 }

@@ -1,0 +1,121 @@
+---
+title: "List Categories"
+api: "GET https://www.pacekb.com/api/v2/categories"
+description: "This endpoint gets all categories from your Knowledge Base."
+---
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  If there's an error an accompanying error message will be visible
+</ResponseField>
+
+<ResponseField name="data" type="array">
+
+List of all categories
+
+<Expandable title="Toggle object in array">
+
+<ResponseField name="other_categories_categories_language_parentTocategories" type="array">
+  An array of all languages associated with this category in the format of \{language: 'fr'\}
+</ResponseField>
+
+<ResponseField name="id" type="string">
+  The unique ID of the category
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  The name of the category
+</ResponseField>
+
+<ResponseField name="order_by" type="number">
+  Numbered priority of how the category should display
+</ResponseField>
+
+<ResponseField name="users_categories_created_byTousers" type="object">
+  The user that created the category
+  <Expandable title="Users object">
+    <ResponseField name="username" type="string">
+      Username of user
+    </ResponseField>
+    <ResponseField name="first_name" type="string">
+      First name of user
+    </ResponseField>
+    <ResponseField name="last_name" type="string">
+      Last name of user
+    </ResponseField>
+    <ResponseField name="email_address" type="string">
+      Email address of user
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="article_relationships" type="array">
+  Array of all article relationships of published articles
+</ResponseField>
+
+<ResponseField name="other_categories_categories_parent_idTocategories" type="object">
+  Parent category (if exists)
+</ResponseField>
+
+</Expandable>
+</ResponseField>
+
+<ResponseField name="languages" type="array">
+  Array of all language codes your Knowledge Base has enabled
+</ResponseField>
+
+<ResponseField name="limit" type="number">
+  Your limit of articles
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://www.pacekb.com/api/v2/categories' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": [
+    {
+        "other_categories_categories_language_parentTocategories": [
+            {
+                "language": "fr"
+            }
+        ],
+        "id": "<id>",
+        "name": "Getting Started",
+        "order_by": 200,
+        "users_categories_created_byTousers": {
+            "username": "benj",
+            "first_name": "Ben",
+            "last_name": "Jenkins",
+            "email_address": "ben@example.com"
+        },
+        "article_relationships": {
+            "added_date": "2023-06-05T20:42:23.805Z",
+            "category_id": "<id>",
+            "id": "<id>",
+            "site_id": "<id>",
+        },
+        "other_categories_categories_parent_idTocategories": {
+            "name": "PaceKB"
+        }
+    }
+  ]
+}
+```
+
+</ResponseExample>
