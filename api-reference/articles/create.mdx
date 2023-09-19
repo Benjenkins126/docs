@@ -75,7 +75,7 @@ description: "This endpoint creates a new article."
 ```bash Example Request
 curl --location --request PUT 'https://www.pacekb.com/api/v2/articles' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
+--header 'Authorization: Bearer <api_key>' \
 --data-raw '{
     "title": "How to create an article in PaceKB",
     "slug": "how-to-create-an-article-in-pacekb",

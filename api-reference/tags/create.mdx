@@ -37,7 +37,7 @@ description: "This endpoint creates a new tag."
 ```bash Example Request
 curl --location --request PUT 'https://www.pacekb.com/api/v2/tags' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
+--header 'Authorization: Bearer <api_key>' \
 --data-raw '{
     "name": "Getting Started",
     "slug": "getting-started",
