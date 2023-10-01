@@ -56,7 +56,8 @@
         "api-reference/articles/list",
         "api-reference/articles/create",
         "api-reference/articles/edit",
-        "api-reference/articles/delete"
+        "api-reference/articles/delete",
+        "api-reference/articles/get"
       ]
     },
     {
@@ -65,7 +66,8 @@
         "api-reference/categories/list",
         "api-reference/categories/create",
         "api-reference/categories/edit",
-        "api-reference/categories/delete"
+        "api-reference/categories/delete",
+        "api-reference/categories/get"
       ]
     },
     {
@@ -74,7 +76,8 @@
         "api-reference/tags/list",
         "api-reference/tags/create",
         "api-reference/tags/edit",
-        "api-reference/tags/delete"
+        "api-reference/tags/delete",
+        "api-reference/tags/get"
       ]
     },
     {

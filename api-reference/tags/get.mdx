@@ -1,0 +1,86 @@
+---
+title: "Get Specific Tag"
+api: "GET https://www.pacekb.com/api/v2/tags/[id]"
+description: "This endpoint gets a specific tag from your Knowledge Base."
+---
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  If there's an error an accompanying error message will be visible
+</ResponseField>
+
+<ResponseField name="data" type="object">
+
+Tag data
+
+<Expandable title="Toggle object">
+
+<ResponseField name="id" type="string">
+  The unique ID of the tag
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  The name of the tag
+</ResponseField>
+
+<ResponseField name="slug" type="string">
+  The slug of the tag
+</ResponseField>
+
+<ResponseField name="description" type="string">
+  The short description of the tag
+</ResponseField>
+
+<ResponseField name="long_description" type="string">
+  The long description of the tag
+</ResponseField>
+
+<ResponseField name="language" type="string">
+  The language code of the tag (null = English)
+</ResponseField>
+
+<ResponseField name="language_parent" type="string">
+  ID of the English version of tag (null = English copy)
+</ResponseField>
+
+</Expandable>
+</ResponseField>
+
+<ResponseField name="newVersion" type="boolean">
+  Returns true if this is a copy into a new language that does not exist
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://www.pacekb.com/api/v2/tags/[id]' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <api_key>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "id": "<id>",
+    "name": "Getting Started",
+    "slug": "getting-started",
+    "description": "Getting started with PaceKB is easy!",
+    "long_description": "<p>It's simple to get started with PaceKB</p>",
+    "language": null,
+    "language_parent": null
+  },
+  "newVersion": true
+}
+```
+
+</ResponseExample>

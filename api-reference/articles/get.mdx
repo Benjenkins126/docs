@@ -1,0 +1,214 @@
+---
+title: "Get Specific Article"
+api: "GET https://www.pacekb.com/api/v2/articles/[id]"
+description: "This endpoint gets a specific article from your Knowledge Base."
+---
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  If there's an error an accompanying error message will be visible
+</ResponseField>
+
+<ResponseField name="data" type="object">
+
+Article data
+
+<Expandable title="Toggle object">
+
+<ResponseField name="id" type="string">
+  The unique ID of the article
+</ResponseField>
+
+<ResponseField name="tags_relationship" type="array">
+    <Expandable title="Toggle object in array">
+        <ResponseField name="id" type="string">
+            The ID of the Article-Tag relationship
+        </ResponseField>
+        <ResponseField name="tag_id" type="string">
+            The ID of the Tag
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ResponseField name="article_relationships" type="array">
+    <Expandable title="Toggle object in array">
+        <ResponseField name="id" type="string">
+            The ID of the Article-Category relationship
+        </ResponseField>
+        <ResponseField name="category_id" type="string">
+            The ID of the Category
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  The name of the article
+</ResponseField>
+
+<ResponseField name="content" type="string">
+  The HTML article content
+</ResponseField>
+
+<ResponseField name="slug" type="string">
+  The slug of the article
+</ResponseField>
+
+<ResponseField name="excerpt" type="string">
+  The SEO excerpt of the article
+</ResponseField>
+
+<ResponseField name="order_by" type="number">
+  The numbered ordering priority of article
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  The article status: (published, draft, draftCopy)
+</ResponseField>
+
+<ResponseField name="created_date" type="date">
+  Date when article was created
+</ResponseField>
+
+<ResponseField name="article_parent" type="string">
+  If article is a draft this is the Parent ID of published article
+</ResponseField>
+
+<ResponseField name="last_edited_date" type="date">
+  Date when article was last edited
+</ResponseField>
+
+<ResponseField name="seo_banner_url" type="string">
+  Image URL of the SEO Banner
+</ResponseField>
+
+<ResponseField name="hide_from_search" type="boolean">
+  Should this article be hidden from search?
+</ResponseField>
+
+<ResponseField name="article_review_date" type="date">
+  Date when article should next be reviewed
+</ResponseField>
+
+<ResponseField name="language" type="string">
+  The language code of the article (null = English)
+</ResponseField>
+
+<ResponseField name="language_parent" type="string">
+  ID of the English version of article (null = English copy)
+</ResponseField>
+
+</Expandable>
+</ResponseField>
+
+<ResponseField name="isDraft" type="object">
+    <Expandable title="Toggle object">
+        <ResponseField name="id" type="string">
+            The unique ID of the latest article draft (if one exists)
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ResponseField name="newVersion" type="boolean">
+  Returns true if this is a copy into a new language that does not exist
+</ResponseField>
+
+<ResponseField name="categories" type="array">
+    <Expandable title="Toggle object in array">
+        <ResponseField name="id" type="string">
+            The unique ID of the category
+        </ResponseField>
+        <ResponseField name="label" type="string">
+            The category name
+        </ResponseField>
+        <ResponseField name="value" type="string">
+            The unique ID of the category
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ResponseField name="tags" type="array">
+    <Expandable title="Toggle object in array">
+        <ResponseField name="id" type="string">
+            The unique ID of the tag
+        </ResponseField>
+        <ResponseField name="label" type="string">
+            The tag name
+        </ResponseField>
+        <ResponseField name="value" type="string">
+            The unique ID of the tag
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://www.pacekb.com/api/v2/articles/[id]' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <api_key>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "message": "Article found successfully",
+  "data": {
+    "id": "<id>",
+    "tags_relationship": [
+        {
+            "id": "<id>",
+            "tag_id": "<id>"
+        }
+    ],
+    "article_relationships": [
+        {
+            "id": "<id>",
+            "category_id": "<id"
+        }
+    ],
+    "name": "How to create a PaceKB Knowledge Base",
+    "content": "<p>This is how you can get started with creating a PaceKB Knowledge Base</p>",
+    "slug": "how-to-create-a-pacekb-knowledge-base",
+    "excerpt": "Starting a Knowledge Base is made easy with PaceKB",
+    "order_by": 20,
+    "status": "published",
+    "created_date": "2023-06-05T20:42:23.805Z",
+    "article_parent": "<id>",
+    "last_edited_Date": "2023-06-05T20:42:23.805Z",
+    "seo_banner_url": "https://pacekb.com/img.png",
+    "hide_from_search": true,
+    "article_review_date": "2023-06-05T20:42:23.805Z",
+    "language": null,
+    "language_parent": null
+  },
+  "isDraft": {
+    "id": "<id>"
+  },
+  "newVersion": true,
+  "categories": [
+    {
+        "id": "<id>",
+        "label": "Getting Started",
+        "value": "<id>",
+    },
+  ],
+  "tags": [
+    {
+        "id": "<id>",
+        "label": "Getting Started",
+        "value": "<id>",
+    }
+  ]
+}
+```
+
+</ResponseExample>

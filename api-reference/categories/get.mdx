@@ -1,0 +1,106 @@
+---
+title: "Get Specific Category"
+api: "GET https://www.pacekb.com/api/v2/categories/[id]"
+description: "This endpoint gets a specific category from your Knowledge Base."
+---
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  If there's an error an accompanying error message will be visible
+</ResponseField>
+
+<ResponseField name="data" type="object">
+
+Category data
+
+<Expandable title="Toggle object">
+
+<ResponseField name="id" type="string">
+  The unique ID of the category
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  The name of the category
+</ResponseField>
+
+<ResponseField name="slug" type="string">
+  The slug of the category
+</ResponseField>
+
+<ResponseField name="order_by" type="number">
+  The numbered ordering priority of category
+</ResponseField>
+
+<ResponseField name="parent_id" type="string">
+  Parent ID of category (null = No parent assigned)
+</ResponseField>
+
+<ResponseField name="thumbnail_url" type="string">
+  Image URL of category thumbnail
+</ResponseField>
+
+<ResponseField name="description" type="string">
+  The short description of the category
+</ResponseField>
+
+<ResponseField name="long_description" type="string">
+  The long description of the category
+</ResponseField>
+
+<ResponseField name="icon_url" type="string">
+  Image URL of category icon
+</ResponseField>
+
+<ResponseField name="language" type="string">
+  The language code of the category (null = English)
+</ResponseField>
+
+<ResponseField name="language_parent" type="string">
+  ID of the English version of category (null = English copy)
+</ResponseField>
+
+</Expandable>
+</ResponseField>
+
+<ResponseField name="newVersion" type="boolean">
+  Returns true if this is a copy into a new language that does not exist
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://www.pacekb.com/api/v2/categories/[id]' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <api_key>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "id": "<id>",
+    "name": "Getting Started",
+    "slug": "getting-started",
+    "order_by": 20,
+    "parent_id": "<id>",
+    "thumbnail_url": "https://pacekb.com/img.png",
+    "description": "Getting started with PaceKB is easy!",
+    "long_description": "<p>It's simple to get started with PaceKB</p>",
+    "icon_url": "https://pacekb.com/icon.png",
+    "language": null,
+    "language_parent": null
+  },
+  "newVersion": true
+}
+```
+
+</ResponseExample>
